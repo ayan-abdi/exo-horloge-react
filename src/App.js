@@ -1,16 +1,29 @@
 import './App.css';
 import Horloge from './Components/horloge/horloge';
+import CurrentDate from './Components/currentDate/currentDate';
+import { useState } from 'react';
 
 function App() {
-  const timer = new Date().toLocaleTimeString();
-  // const timer2 = timer.getTime()
-  return (
+  const [displayCurrentDate, setDisplayCurrentDate] = useState(true);
+  const [displayHorloge, setDisplayHorloge] = useState(false);
+ 
+  
+ return (
+
     <div className="App">
-    <h1>My Horloge ♥ </h1>
-    <span>time={timer}</span>
-    {/* <p>Il est {new Date().toLocaleTimeString()}.</p> */}
-    <Horloge/>
-    </div>
+    <h1>Hier mijn Horloge ♥ </h1>
+    <button onClick={() => {
+      setDisplayCurrentDate(!displayCurrentDate); 
+      setDisplayHorloge(!displayHorloge)}
+      }>click</button>
+    {displayCurrentDate && 
+      <CurrentDate />
+    }
+    {displayHorloge && 
+      <Horloge/>
+    }
+    
+   </div>
   );
 }
 
